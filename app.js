@@ -4,10 +4,20 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+var session = require('express-session');
+var flash = require('connect-flash');
+var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb:/localhost:27017/db_csv');
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
 var app = express();
+
+app.use(session({ cookie: {maxAge: 5000}, 
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: false}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
