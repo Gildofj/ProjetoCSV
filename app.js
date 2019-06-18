@@ -8,7 +8,8 @@ var session = require('express-session');
 var flash = require('connect-flash');
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb:/localhost:27017/db_csv');
+mongoose.connect('mongodb://localhost:27017/db_produto');
+require('./models/Produto');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
