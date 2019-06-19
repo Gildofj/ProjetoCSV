@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var Produto = mongoose.model('Produto');
 var csvfile = __dirname + "/../public/files/TESTE.csv";
 var stream = fs.createReadStream(csvfile);
+require('../app');
 
 
 router.get('/', function (req, res, next) {
@@ -43,5 +44,36 @@ router.get('/', function (req, res, next) {
         throw err;
       }
     });
+  })  
+  .get('/edit/:id', (req, res) => {
+    var id = req.params.id
+
+    Produto.findOne((err, result) => {
+      if (err) return res.send(err)
+      res.render('edit.pug', {dados: result})
+    })
+  })
+  .post((req, res) => {
+    var id = req.params.id
+    var nome = req.body.nome
+    var preco = req.body.preco
+    var categoria = req.body.categoria
+    var fabricante = req.body.fabricante
+
+    Produto.updateOne( {
+      $set: {
+        nome: nome,
+        preco: preco,
+        categoria: categoria,
+        descricao: descricao,
+        fabricante: fabricante
+      }
+    }, (err, result) => {
+      if (err) return res.send(err)
+      res.redirect('/fetchdata')
+      console.log('Dados atualizados com sucesso.')
+    })
   });
+
+
 module.exports = router;

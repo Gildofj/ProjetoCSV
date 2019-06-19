@@ -1,0 +1,26 @@
+extends layout
+block content
+ br
+ h2 Editando Arquivo
+ br
+ p
+ br
+ p#message.alert.alert-success(style='display:none')
+ br
+ table.table.table-bordered
+  thead
+    tr
+      label Nome
+      input(type="text" id="nome" value="produto['nome']")
+      label Preço
+      input(type="text" id="preco" value="produto['preco']")
+      label Categoria 
+      input(type="text" id="categoria" value="produto['categoria']")
+      label Descrição
+      input(type="text" id="descricao" value="produto['descricao']")
+      label Fabricante
+      input(type="text" id="fabricante" value="produto['fabricante']")
+      br
+      input(type="button", value="Salvar", class="btn btn-success", href="/")
+      tbody#trdata
+    tr
