@@ -10,17 +10,16 @@ block content
  table.table.table-bordered
   thead
     tr
-      label Nome
-      input(type="text" id="nome" value="produto['nome']")
+      label Nome 
+      input(type="text" id="nome" value="")
       label Preço
-      input(type="text" id="preco" value="produto['preco']")
+      input(type="text" id="preco" value="#trdata")
       label Categoria 
-      input(type="text" id="categoria" value="produto['categoria']")
+      input(type="text" id="categoria" value="#trdata")
       label Descrição
-      input(type="text" id="descricao" value="produto['descricao']")
+      input(type="text" id="descricao" value="#trdata")
       label Fabricante
-      input(type="text" id="fabricante" value="produto['fabricante']")
+      input(type="text" id="fabricante" value="#trdata")
       br
       input(type="button", value="Salvar", class="btn btn-success", href="/")
-      tbody#trdata
     tr
